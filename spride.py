@@ -2,9 +2,13 @@
 import urllib.request
 import http.client
 import re
+from redis_manager import RedisTermsManager
 class CrawlBSF:
         re_categories = re.compile('<a href="/fenlei/(.*?)"', re.S|re.M)
         base_url = 'https://baike.baidu.com/'
+        
+        redis_cls = RedisTermsManager()
+        
         def getpagecontent(self):
                 print("downloading start")
                 try:
@@ -19,6 +23,7 @@ class CrawlBSF:
                 fo = open( filename, 'wb+')
                 for category in categories:
                         fo.write(str.encode(category))
+                        redis_cls.enqueue_item(self,"spider",str.encode(category))
                 fo.close()
                 print("downloading end")
 crawler = CrawlBSF()
