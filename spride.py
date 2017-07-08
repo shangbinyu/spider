@@ -6,7 +6,7 @@ from redis_manager import RedisTermsManager
 class CrawlBSF:
         re_categories = re.compile('<a href="/fenlei/(.*?)"', re.S|re.M)
         base_url = 'https://baike.baidu.com/'
-         request_headers = {
+        request_headers = {
              'host': "www.baidu.com",
              'connection': "keep-alive",
              'cache-control': "no-cache",
