@@ -20,11 +20,11 @@ class CrawlBSF:
         def getpagecontent(self):
                 print("downloading start")
                 try:
-                      response = urllib.request.urlopen(self.base_url,data = None, headers=self.request_headers,timeout = 10)
+                      response = urllib.request.urlopen(self.base_url,data = None,timeout = 10)
                       html_page = response.read()
                 except Exception as e:
                       return e
-                
+                print("downloading read")
                 html_page = html_page.decode('utf-8')
                 categories = self.re_categories.findall(html_page)
                 filename = "baidu_baike_categories.html"
