@@ -31,7 +31,7 @@ class CrawlBSF:
                 fo = open( filename, 'wb+')
                 for category in categories:
                         fo.write(str.encode(category))
-                        redis_cls.enqueue_item(self,"spider",str.encode(category))
+                        self.redis_cls.enqueue_item(self,"spider",str.encode(category))
                 fo.close()
                 print("downloading end")
 crawler = CrawlBSF()
